@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,5 +40,16 @@ class Transaction extends Model
         $this->attributes['transaction_date'] = Carbon::createFromFormat(
             'm/d/Y',$value)->format(
                 'Y-m-d');
+    }
+
+    protected static function booted()
+    {
+        parent::booted();
+
+        if (auth()->check()) {
+            static::addGlobalScope('by_user', function (Builder $builder) {
+                $builder->where('user_id', auth()->id());
+            });
+        }
     }
 }

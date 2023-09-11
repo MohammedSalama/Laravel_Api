@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Category extends Model
 {
@@ -13,4 +14,16 @@ class Category extends Model
         'name',
         'user_id'
     ];
+
+    protected static function booted()
+    {
+        parent::booted();
+
+        if (auth()->check()) {
+            static::addGlobalScope('by_user', function (Builder $builder) {
+                $builder->where('user_id', auth()->id());
+            });
+        }
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,5 +31,12 @@ class Transaction extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function setTransactionDateAttribute($value)
+    {
+        $this->attributes['transaction_date'] = Carbon::createFromFormat(
+            'm/d/Y',$value)->format(
+                'Y-m-d');
     }
 }

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace Api\Transaction\Controllers\Api;
 
+use Api\Transaction\Models\Transaction;
+use Api\Transaction\Requests\StoreTransactionRequest;
+use Api\Transaction\Resources\TransactionResource;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTransactionRequest;
-use App\Http\Resources\TransactionResource;
-use App\Models\Transaction;
-use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {

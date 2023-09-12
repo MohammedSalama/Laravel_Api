@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Api\Transaction\Models;
 
+use Api\Category\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

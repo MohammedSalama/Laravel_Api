@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Api\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Api\Category\Models\Category;
+use Api\Transaction\Models\Transaction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
